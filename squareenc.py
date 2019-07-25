@@ -22,7 +22,7 @@ class SquareEncoder:
 		'''if filename passed, returns true/false, otherwise returns resulting image object'''
 		l = len(self.text)
 		curx, cury = 0, 0
-		im = Image.new('RGB', ( (self.maxWidth + self.gap) * self.width, (l + self.gap) * self.width ), color = 'white')
+		im = Image.new('RGB', ( (self.width + self.gap) * self.maxWidth, (self.width + self.gap) * l ), color = 'white')
 		id = ImageDraw.Draw(im)
 
 		for ch in self.text:
@@ -46,12 +46,12 @@ class SquareEncoder:
 
 if __name__ == "__main__":
 	try:
-		f = open(__file__)
+		f = open('fizzbuzz.py')
 	except:
 		print("Couldn't open myself! ", sys.exc_info()[0])
 		sys.exit()
 	s = f.read()
 	f.close()
-	sq = SquareEncoder(s, 8)
+	sq = SquareEncoder(s, 6)
 	sq.draw("squared.png")
 	
